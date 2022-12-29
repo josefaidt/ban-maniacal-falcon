@@ -1,5 +1,12 @@
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
 
+## repro notes
+
+- if we add a dependency that is ESM-only (such as https://shoelace.style), plasmo will error with `🔴 ERROR  | Failed to resolve '@shoelace-style/shoelace' from './src/popup.svelte'`
+- if we add `"type": "module"` to the root `package.json` and convert `svelte.config.js` to ESM plasmo will error with `🔴 ERROR  | require() of ES Module /Users/josef/Documents/playground/plasmo-svelte/ban-maniacal-falcon/svelte.config.js`
+- if we add `"type": "module"` to the root `package.json` and convert `svelte.config.js` to CommonJS: `svelte.config.cjs`, plasmo will error with ""
+- if we add `"type": "module"` to the root `package.json`, patch plasmo to read `svelte.config.cjs`, and add a dependency that is ESM-only (such as https://shoelace.style), plasmo will error with `🔴 ERROR  | Failed to resolve '@shoelace-style/shoelace' from './src/popup.svelte'`
+
 ## Getting Started
 
 First, run the development server:

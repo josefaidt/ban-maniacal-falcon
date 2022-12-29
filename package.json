@@ -1,20 +1,24 @@
 {
   "name": "ban-maniacal-falcon",
+  "type": "module",
   "displayName": "Ban maniacal falcon",
   "version": "0.0.0",
   "description": "A basic Plasmo extension.",
   "author": "josef",
   "scripts": {
+    "copy-shoelace-icons": "cp -r node_modules/@shoelace-style/shoelace/dist/assets assets/shoelace",
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "package": "plasmo package"
+    "package": "plasmo package",
+    "prepare": "pnpm copy-shoelace-icons"
   },
   "dependencies": {
-    "plasmo": "0.60.2",
+    "plasmo": "link:./plasmo/cli/plasmo",
     "svelte": "3.55.0",
     "svelte-preprocess": "5.0.0"
   },
   "devDependencies": {
+    "@shoelace-style/shoelace": "2.0.0-beta.87",
     "@types/chrome": "0.0.204",
     "@types/node": "18.11.15",
     "prettier": "2.8.1",
@@ -22,8 +26,16 @@
     "@plasmohq/prettier-plugin-sort-imports": "3.6.1"
   },
   "manifest": {
+    "omnibox": {
+      "keyword": "a"
+    },
+    "permissions": [
+      "declarativeNetRequest",
+      "storage",
+      "webNavigation"
+    ],
     "host_permissions": [
-      "https://*/*"
+      "*://a/*"
     ]
   }
 }
